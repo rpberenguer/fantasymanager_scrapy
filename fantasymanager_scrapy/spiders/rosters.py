@@ -8,4 +8,6 @@ class RostersSpider(scrapy.Spider):
     start_urls = ['http://http://espn.go.com/nba/teams/']
 
     def parse(self, response):
-        pass
+        teams = response.xpath("//a[starts-with(@href, '/nba/team/roster/_/name/')]/@href").extract()
+        for team in teams:
+            print(team)
