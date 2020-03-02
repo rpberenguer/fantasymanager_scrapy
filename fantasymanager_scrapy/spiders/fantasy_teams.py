@@ -36,17 +36,17 @@ class FantasyTeamsSpider(Spider):
             EC.visibility_of_element_located((By.XPATH, "//input[@type='email']")))
         email.send_keys('rpberenguer@gmail.com')
 
-        password = WebDriverWait(self.driver, 20).until(
+        password = wait.until(
             EC.visibility_of_element_located((By.XPATH, "//input[@type='password']")))
         password.send_keys('ilovethisgame&&&')
 
-        signupButton = WebDriverWait(self.driver, 20).until(
+        signupButton = wait.until(
             EC.visibility_of_element_located((By.XPATH, "//button[@class='btn btn-primary btn-submit ng-isolate-scope']")))
         signupButton.click()
 
         self.driver.switch_to.default_content()
 
-        fantasyTeamList = WebDriverWait(self.driver, 20).until(
+        fantasyTeamList = wait.until(
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[class='pa1 bg-clr-white br-5 roster-container']")))
 
         for fantasyTeamElement in fantasyTeamList:
