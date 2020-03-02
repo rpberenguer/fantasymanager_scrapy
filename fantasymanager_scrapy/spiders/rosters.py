@@ -17,6 +17,6 @@ class RostersSpider(scrapy.Spider):
         playerLinks = response.xpath(".//tbody/tr/td[2]/span/a[starts-with(@href, 'http://www.espn.com/nba/player/_/id/')]")
         for playerLink in playerLinks:
             yield{
-                'playerId': playerLink.xpath('@href').get(),
-                'playerName': playerLink.xpath('text()').get()
+                'playerId': playerLink.xpath('@href').extract_first(),
+                'playerName': playerLink.xpath('text()').extract_first()
             }
