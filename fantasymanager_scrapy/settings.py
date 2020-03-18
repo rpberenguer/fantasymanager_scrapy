@@ -64,9 +64,14 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'fantasymanager_scrapy.pipelines.FantasymanagerScrapyPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'fantasymanager_scrapy.pipelines.MongoDBPipeline': 300,
+}
+
+MONGODB_SERVER = 'localhost'
+MONGODB_PORT = 27017
+MONGODB_DB = 'fantasymanager'
+MONGODB_COLLECTION = 'statistics'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
